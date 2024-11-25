@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grayLight">#FBFBFB</color>
+    <color name="grayDark">#9B9B9B</color>
+    <color name="primary">#00BFA6</color>
+    <color name="primaryInverse">#A9E6E3</color>
+    <color name="primaryDark">#0C3E0F</color>
+    <color name="primaryLight">#A8F8EE</color>
+
+    <color name="chartColor1">#80CAFF</color>
+    <color name="chartColor2">#86E0A3</color>
+    <color name="chartColor3">#FFDA66</color>
+    <color name="chartColor4">#FFB0A3</color>
+</resources>

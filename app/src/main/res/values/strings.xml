@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">Serenity</string>
+    <string name="iv_cd_splash">Splash Screen Logo</string>
+
+    <string-array name="gender_entries">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="gender_values">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
+
+    <string-array name="questioner_social_media_entries">
+        <item>TikTok</item>
+        <item>X (Twitter)</item>
+        <item>Instagram</item>
+        <item>Facebook</item>
+        <item>YouTube</item>
+        <item>Reddit</item>
+        <item>Threads</item>
+    </string-array>
+
+    <string-array name="questioner_use_time_entries">
+        <item>Less than an Hour</item>
+        <item>Between 1 and 2 hours</item>
+        <item>Between 2 and 3 hours</item>
+        <item>Between 3 and 4 hours</item>
+        <item>Between 4 and 5 hours</item>
+        <item>More than 5 hours</item>
+    </string-array>
+
+    <string-array name="questioner_use_time_values">
+        <item>&lt;1</item>
+        <item>1-2</item>
+        <item>2-3</item>
+        <item>3-4</item>
+        <item>4-5</item>
+        <item>&gt;5</item>
+    </string-array>
+
+    <string-array name="questioner_likert_scale_entries">
+        <item>Very Easy</item>
+        <item>Easy</item>
+        <item>Neutral</item>
+        <item>Difficult</item>
+        <item>Very Difficult</item>
+    </string-array>
+
+    <string-array name="questioner_likert_scale_2nd_entries">
+        <item>Not at all</item>
+        <item>Slightly</item>
+        <item>Moderately</item>
+        <item>Quite a bit</item>
+        <item>Extremely</item>
+    </string-array>
+
+    <string-array name="questioner_likert_scale_3rd_entries">
+        <item>Not at all</item>
+        <item>Slightly</item>
+        <item>Moderately</item>
+        <item>Quite a bit</item>
+        <item>Extremely</item>
+    </string-array>
+
+    <string-array name="questioner_likert_scale_4th_entries">
+        <item>Never</item>
+        <item>Rarely</item>
+        <item>Sometimes</item>
+        <item>Often</item>
+        <item>Always</item>
+    </string-array>
+
+    <string-array name="questioner_likert_scale_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="filter_activity">
+        <item>Today</item>
+        <item>This Week</item>
+        <item>This Month</item>
+    </string-array>
+</resources>
