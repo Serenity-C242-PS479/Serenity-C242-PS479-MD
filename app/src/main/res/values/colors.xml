@@ -8,6 +8,7 @@
     <color name="primaryInverse">#A9E6E3</color>
     <color name="primaryDark">#0C3E0F</color>
     <color name="primaryLight">#A8F8EE</color>
+    <color name="red">#FF0000</color>
 
     <color name="chartColor1">#80CAFF</color>
     <color name="chartColor2">#86E0A3</color>

@@ -1,7 +1,14 @@
 package com.serenity.serenityapp.ui.main
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.serenity.serenityapp.R
 import com.serenity.serenityapp.databinding.ActivityMainBinding
 import com.serenity.serenityapp.ui.challenge.ChallengeFragment
@@ -19,6 +26,19 @@ class MainActivity : AppCompatActivity() {
 
         setupFragment()
         setupNavigation()
+
+        val defaultItemId = intent.getIntExtra("menu", R.id.navigation_home)
+        binding.navigation.selectedItemId = defaultItemId
+
+        askNotificationPermission()
+    }
+
+    private fun askNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
+            }
+        }
     }
 
     private fun setupFragment() {

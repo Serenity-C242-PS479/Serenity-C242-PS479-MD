@@ -1,26 +1,23 @@
 package com.serenity.serenityapp.ui.challenge
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
 import com.serenity.serenityapp.R
-import com.serenity.serenityapp.data.model.Activity
-import com.serenity.serenityapp.data.model.Challenge
+import com.serenity.serenityapp.data.model.api.response.ChallengeData
 import com.serenity.serenityapp.databinding.FragmentChallengeBinding
-import com.serenity.serenityapp.databinding.FragmentUsageBinding
-import com.serenity.serenityapp.ui.adapter.ActivityRecycleViewAdapter
+import com.serenity.serenityapp.helper.ViewModelFactory
+import com.serenity.serenityapp.helper.moveToActivity
 import com.serenity.serenityapp.ui.adapter.ChallengeRecycleViewAdapter
 
-class ChallengeFragment: Fragment(R.layout.fragment_challenge) {
+class ChallengeFragment: Fragment(R.layout.fragment_challenge), View.OnClickListener {
     private lateinit var binding: FragmentChallengeBinding
+    private lateinit var viewModel: ChallengeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,42 +26,69 @@ class ChallengeFragment: Fragment(R.layout.fragment_challenge) {
     ): View {
         binding = FragmentChallengeBinding.inflate(inflater, container, false)
 
-        showChallengeRecycleView()
+        setupViewModel()
+        setupObserver()
+        setupViewListener()
 
         return binding.root
     }
 
-    private fun showChallengeRecycleView() {
-        val dummyChallenges = listOf(
-            Challenge(
-                name = "Morning Workout",
-                hourStart = "06:00",
-                hourEnd = "07:00",
-                createdAt = "2024-11-20 08:30:00"
-            ),
-            Challenge(
-                name = "Reading Hour",
-                hourStart = "09:00",
-                hourEnd = "10:00",
-                createdAt = "2024-11-21 10:15:00"
-            ),
-            Challenge(
-                name = "Coding Challenge",
-                hourStart = "14:00",
-                hourEnd = "16:00",
-                createdAt = "2024-11-22 14:45:00"
-            ),
-            Challenge(
-                name = "Evening Run",
-                hourStart = "17:30",
-                hourEnd = "18:30",
-                createdAt = "2024-11-23 17:00:00"
-            )
-        )
+    private fun setupViewListener() {
+        binding.btnAdd.setOnClickListener(this)
+    }
 
-        val adapter = ChallengeRecycleViewAdapter(dummyChallenges)
-        binding.rvChallenge.adapter = adapter
-        binding.rvChallenge.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        binding.rvChallenge.isNestedScrollingEnabled = false
+    private fun setupViewModel() {
+        val viewModelFactory = ViewModelFactory.getInstance(requireActivity())
+        viewModel = ViewModelProvider(requireActivity(), viewModelFactory)[ChallengeViewModel::class.java]
+    }
+
+    private fun setupObserver() {
+        viewModel.challenges.observe(viewLifecycleOwner) { challenges ->
+            showChallengeRecycleView(challenges.sortedByDescending { it.createdAt })
+        }
+
+        viewModel.loading.observe(viewLifecycleOwner) { loading ->
+            binding.llLoader.visibility = if (loading) View.VISIBLE else View.GONE
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            if (error.isNotEmpty()) {
+                Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.isDeleteSuccess.observe(viewLifecycleOwner) { isDeleteSuccess ->
+            if (isDeleteSuccess) {
+                Toast.makeText(requireActivity(), "Challenge successfully deleted", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.getChallenges()
+    }
+
+    private fun showChallengeRecycleView(challenges: List<ChallengeData>) {
+        if (challenges.isNotEmpty()) {
+            val adapter = ChallengeRecycleViewAdapter(challenges, true) { challenge ->
+                viewModel.deleteChallenge(challenge.id)
+            }
+
+            binding.rvChallenge.adapter = adapter
+            binding.rvChallenge.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+            binding.rvChallenge.isNestedScrollingEnabled = false
+            binding.rvChallenge.visibility = View.VISIBLE
+
+            binding.tvNoChallenge.visibility = View.GONE
+        } else {
+            binding.rvChallenge.visibility = View.GONE
+            binding.tvNoChallenge.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onClick(view: View) {
+        when (view) {
+            binding.btnAdd -> {
+                requireActivity().moveToActivity(CreateChallengeActivity::class.java)
+            }
+        }
     }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.challenge.CreateChallengeActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_loader"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:background="#26000000"
+        android:visibility="gone"
+        android:elevation="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Create Challenge"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Title"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+        <com.serenity.serenityapp.ui.component.FormEditText
+            android:id="@+id/edt_title"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/edit_text_border"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/raleway_light"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Start At"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+        <com.serenity.serenityapp.ui.component.FormEditText
+            android:id="@+id/edt_start_hour"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/edit_text_border"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/raleway_light"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/open_sans"
+            android:text="End At"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+        <com.serenity.serenityapp.ui.component.FormEditText
+            android:id="@+id/edt_end_hour"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/edit_text_border"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/raleway_light"/>
+
+        <com.serenity.serenityapp.ui.component.SubmitButton
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Create Challenge"
+            android:enabled="true"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

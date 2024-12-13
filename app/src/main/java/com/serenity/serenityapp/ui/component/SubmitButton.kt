@@ -31,6 +31,5 @@ class SubmitButton: AppCompatButton {
         setTextColor(if (isEnabled) enabledTextColor else disabledTextColor)
         gravity = Gravity.CENTER
         textSize = 12f
-        text = if (isEnabled) "Submit" else "Fill all input"
     }
 }

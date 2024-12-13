@@ -3,13 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="15dp"
+    android:paddingHorizontal="15dp"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -18,16 +20,33 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Activity"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:fontFamily="@font/open_sans_bold"/>
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activity"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/open_sans_bold"/>
+
+                <TextView
+                    android:id="@+id/tv_total_used_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Used Time: 30 hour"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/open_sans"/>
+
+            </LinearLayout>
 
             <Spinner
+                android:id="@+id/spn_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_border_black"
@@ -39,16 +58,65 @@
         </LinearLayout>
 
         <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/chart_activity"
+            android:id="@+id/chart_activity_pie"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="270dp"
             android:layout_marginTop="20dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbarStyle="insideInset"
+            android:scrollbarFadeDuration="0">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/chart_activity_bar"
+                    android:layout_width="500dp"
+                    android:layout_height="270dp"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone"/>
+
+                <com.github.mikephil.charting.charts.ScatterChart
+                    android:id="@+id/chart_activity_scatter"
+                    android:layout_width="1000dp"
+                    android:layout_height="270dp"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0.5dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bnv_chart"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:itemPaddingTop="0dp"
+                app:itemPaddingBottom="0dp"
+                app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/navigation_chart"/>
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_activity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_activity_recent"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="7.5dp"
+            tools:listitem="@layout/item_activity"/>
 
     </LinearLayout>
 

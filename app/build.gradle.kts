@@ -11,12 +11,16 @@ android {
 
     defaultConfig {
         applicationId = "com.serenity.serenityapp"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_BACKEND_URL", "\"https://serenity-621043177021.asia-southeast2.run.app/api/v1/\"")
+        buildConfigField("String", "API_PREDICT_BREAK_REMINDER_URL", "\"https://asia-southeast2-c242-ps479.cloudfunctions.net/\"")
+        buildConfigField("String", "API_PREDICT_SENTIMENT_URL", "\"https://asia-southeast2-c242-ps479.cloudfunctions.net/\"")
     }
 
     buildTypes {
@@ -40,22 +44,49 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
-
+    // General
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.activity.ktx)
+
+    // Coroutine
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.jetbrains.kotlinx.coroutines.android)
 
     // Chart
     implementation(libs.mpandroidchart)
 
+    // Circle Image View
+    implementation(libs.circleimageview)
+
+    // Glide
+    implementation (libs.glide)
+    ksp(libs.glide.compiler)
+
+    // Retrofit 2
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.logging.interceptor)
+
+    // Room
+    implementation(libs.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+
+    // Data Store
+    implementation(libs.androidx.datastore.preferences)
+
     // Testing
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

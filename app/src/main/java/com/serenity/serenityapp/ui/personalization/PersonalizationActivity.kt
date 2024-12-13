@@ -36,6 +36,4 @@ class PersonalizationActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
-
 }

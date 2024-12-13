@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Serenity</string>
     <string name="iv_cd_splash">Splash Screen Logo</string>
+    <string name="tv_txt_setup_acb_title">Accessbility</string>
+    <string name="tv_txt_setup_acb_description">This app needs Accessibility Service access to detect and close certain apps when necessary. This permission will only be used to ensure the app functions as intended. Please enable this service by tapping the button below.</string>
+    <string name="btn_setup_acb_enable">Enable Accessbility</string>
+    <string name="tv_txt_setup_ua_title">Usage Access</string>
+    <string name="tv_txt_setup_ua_description">This app needs Usage Access Service to help track how long you use social media. This permission will only be used to ensure the app functions as intended. Please enable this service by tapping the button below.</string>
+    <string name="btn_txt_setup_ua_enable">Enable Usage Access</string>
+    <string name="tv_txt_setup_sp_title">Show Popup</string>
+    <string name="tv_txt_setup_sp_description">This app needs Display Over Other Apps Service to show information popup when closing certain apps. This permission will only be used to ensure the app functions as intended. Please enable this service by tapping the button below.</string>
+    <string name="btn_txt_setup_sp_enable">Enable Display Over Other App</string>
+
+    <string name="accessibility_service_description">❓Why do we use this permission?\nWe use Accessibility Service to detect and close certain apps when necessary. To help you control you social media usage every day\n\n❓Do we collect your private data?\nWe do not collect your private data through this permission.\n\nSerenity Developer Team</string>
 
     <string-array name="gender_entries">
         <item>Male</item>
@@ -8,8 +19,8 @@
     </string-array>
 
     <string-array name="gender_values">
-        <item>male</item>
-        <item>female</item>
+        <item>Male</item>
+        <item>Female</item>
     </string-array>
 
     <string-array name="questioner_social_media_entries">
